@@ -38,7 +38,7 @@ GET_MY_ASSET_BUTTON = (By.XPATH, "//span[text()='내 자산 보기']")
 
 
 # 보유 KRW
-GET_MY_KRW = (By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div/section[1]/article/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]')
+GET_MY_KRW = (By.CSS_SELECTOR, 'span:nth-of-type(2)')
 
 # 총 보유자산
-GET_TOTAL_ROWS = (By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div/section[1]/article/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/span[1]')
+GET_TOTAL_ROWS = (By.CSS_SELECTOR, 'span:nth-of-type(5)')

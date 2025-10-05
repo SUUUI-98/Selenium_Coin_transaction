@@ -40,7 +40,11 @@ def main():
 
     my_rows = my_rows_parser.parse_profit(driver)
     if my_rows:
-        print(f"{my_rows}")
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print(f"===  내 자산 목록 스냅샷 ({current_time}) ===")
+
+        for m in my_rows:
+            print(f" 보유 KRW {m['my_holding_krw']:10} | 총 보유자산: {m['total_rows']:10} ")
 
     #드라이버 종료
     driver.quit()

@@ -8,7 +8,7 @@ from data.selectors import COIN_NAME, HOLDING_ELEMENT, HOLDING_QUANTITY, HOLDING
 import help.hold
 
 def parse_holdings(driver: WebDriver):
-    """보유 자산 목록을 파싱하여 반환합니다."""
+    """보유 자산 목록을 파싱하여 반환"""
     try:
         wait = WebDriverWait(driver, 30)
         rows = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "table.highlight.holdings tbody tr")))

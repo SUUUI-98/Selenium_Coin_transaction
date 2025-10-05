@@ -4,8 +4,8 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 import time
 from selenium.webdriver.support import expected_conditions as EC
-from data.selectors import MY_BUTTON, GET_MY_ASSET_BUTTON, GET_MY_KRW, HOLDING_ELEMENT
-
+from data.selectors import MY_BUTTON, GET_MY_ASSET_BUTTON, GET_MY_KRW, HOLDING_ELEMENT, GET_TOTAL_ROWS
+import help.hold
 
 def parse_profit(driver: WebDriver):
     # My 버튼 클릭
@@ -20,7 +20,7 @@ def parse_profit(driver: WebDriver):
         wait = WebDriverWait(driver, 30)
         my_rows = wait.until(
                 EC.presence_of_all_elements_located(
-                (By.CSS_SELECTOR, "MyTrade.MyTrade__TradeState TradeState.TradeState__section")))
+                (By.CSS_SELECTOR, ".MyTrade .MyTrade__TradeState.TradeState .TradeState__section")))
 
 
     except Exception as e:
@@ -30,23 +30,33 @@ def parse_profit(driver: WebDriver):
 
 
     my_results = []
+
     for i, row in enumerate(my_rows, start=1):
         try:
-            # 코인명은 th 태그
-            my_holding_krw = row.find_element(*GET_MY_KRW).text
+            # '보유 KRW' 찾기
+            assets_krw_value_text = WebDriverWait(driver, 30).until(
+                EC.presence_of_element_located(
+                    (By.XPATH, ".//span[contains(text(), '보유 KRW')]/../following-sibling::div/span[1]")
+                )
+            ).text
 
-            # 보유수량/평가 금액 (첫 번째 td의 자식 요소 )
-            total_rows = row.find_element(*HOLDING_ELEMENT)
+            # '총 보유자산' 값 찾기
+            total_assets_krw_text = WebDriverWait(driver, 30).until(
+                EC.presence_of_element_located(
+                    (By.XPATH, ".//span[contains(text(), '총 보유자산')]/../following-sibling::div/span[1]")
+                )
+            ).text
+            assets_krw_value = help.hold.num(assets_krw_value_text)
+            total_assets_krw = help.hold.num(total_assets_krw_text)
 
-            my_results.append({"my_holding_krw": my_holding_krw,
-                           "total_rows": total_rows})
+            my_results.append({"my_holding_krw": assets_krw_value,
+                           "total_rows": total_assets_krw})
 
-            return bool
 
         except Exception as e:
             print(f"row {i}  , 파싱 에러 발생 ", e)
             return False
 
-    return my_results
+        return my_results
 
-
+    return True
