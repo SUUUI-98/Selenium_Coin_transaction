@@ -1,10 +1,9 @@
-from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 import time
 from selenium.webdriver.support import expected_conditions as EC
-from data.selectors import MY_BUTTON, GET_MY_ASSET_BUTTON, GET_MY_KRW, HOLDING_ELEMENT, GET_TOTAL_ROWS
+from data.selectors import MY_BUTTON, GET_MY_ASSET_BUTTON, GET_MY_KRW, GET_TOTAL_ROWS
 import help.hold
 
 def parse_profit(driver: WebDriver):
@@ -33,19 +32,16 @@ def parse_profit(driver: WebDriver):
 
     for i, row in enumerate(my_rows, start=1):
         try:
-            # '보유 KRW' 찾기
+            # 1.  '보유 KRW' 찾기
             assets_krw_value_text = WebDriverWait(driver, 30).until(
-                EC.presence_of_element_located(
-                    (By.XPATH, ".//span[contains(text(), '보유 KRW')]/../following-sibling::div/span[1]")
-                )
-            ).text
+                EC.presence_of_element_located(*GET_MY_KRW)).text
 
-            # '총 보유자산' 값 찾기
+            # 2. '총 보유자산' 값 찾기
             total_assets_krw_text = WebDriverWait(driver, 30).until(
-                EC.presence_of_element_located(
-                    (By.XPATH, ".//span[contains(text(), '총 보유자산')]/../following-sibling::div/span[1]")
-                )
-            ).text
+                EC.presence_of_element_located(*GET_TOTAL_ROWS)).text
+
+
+
             assets_krw_value = help.hold.num(assets_krw_value_text)
             total_assets_krw = help.hold.num(total_assets_krw_text)
 

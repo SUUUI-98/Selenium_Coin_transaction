@@ -38,7 +38,7 @@ GET_MY_ASSET_BUTTON = (By.XPATH, "//span[text()='내 자산 보기']")
 
 
 # 보유 KRW
-GET_MY_KRW = (By.CSS_SELECTOR, 'span:nth-of-type(2)')
+GET_MY_KRW = (By.XPATH, ".//span[contains(text(), '보유 KRW')]/../following-sibling::div/span[1]")
 
 # 총 보유자산
-GET_TOTAL_ROWS = (By.CSS_SELECTOR, 'span:nth-of-type(5)')
+GET_TOTAL_ROWS = (By.XPATH, ".//span[contains(text(), '총 보유자산')]/../following-sibling::div/span[1]")
