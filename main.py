@@ -9,6 +9,8 @@ from selenium.webdriver.support import expected_conditions as EC
 import help.hold
 from datetime import datetime
 
+from data.selectors import *
+
 
 def main():
     # 접속할 웹 도메인 주소
@@ -24,16 +26,16 @@ def main():
 
     try:
         # 로그인 버튼
-        driver.find_element(By.XPATH, '//*[@id="UpbitLayout"]/header/div/div/div[1]/a[1]/span').click()
+        driver.find_element(*LOGIN_BUTTON).click()
         time.sleep(3)
 
         # qr 로그인
-        driver.find_element(By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div[2]/div/div/a').click()
+        driver.find_element(*QR_LOGIN_BUTTON).click()
         time.sleep(15)
         # 핸드폰으로 로그인 시나리오 마무리
 
         # a 태그로 감싸진 요소중 텍스트가 '보유' 인 요소 선택
-        driver.find_element(By.XPATH, "//a[text()='보유']").click()
+        driver.find_element(*HOLDINGS_LINK).click()
 
         wait = WebDriverWait(driver, 30)
 
@@ -50,21 +52,17 @@ def main():
     for i, row in enumerate(rows, start=1):
         try:
             # 코인명은 th 태그
-            coin_name= row.find_element(By.CSS_SELECTOR, "th a strong").text
+            coin_name= row.find_element(*COIN_NAME).text
 
             # 보유수량/평가 금액 (첫 번째 td의 자식 요소 )
-            holding_elem = row.find_element(By.CSS_SELECTOR, "td:nth-of-type(1)")
+            holding_elem = row.find_element(*HOLDING_ELEMENT)
 
             # 보유수량은 이 td의 자식인 strong 태그
-            holding_strong_elems = holding_elem.find_elements(By.CSS_SELECTOR, "strong")
-
-            if holding_strong_elems:
-                holding_text = holding_strong_elems[0].text
-            else:
-                holding_text = "N/A"  # 또는 0, None 등으로 처리
+            holding_strong_elems = holding_elem.find_elements(*HOLDING_QUANTITY)
+            holding_text = holding_strong_elems[0].text
 
             # 평가 금액은 이 td의 자식인 em 태그
-            holding_em_elems = holding_elem.find_elements(By.CSS_SELECTOR, "em")
+            holding_em_elems = holding_elem.find_elements(*HOLDING_AMOUNT_KRW)
             if holding_em_elems:
                 holding_krw = holding_em_elems[0].text
             else:
@@ -72,30 +70,30 @@ def main():
 
 
             # 매수평균가 (두 번째 td)
-            avg_price_elem = row.find_element(By.CSS_SELECTOR, "td:nth-of-type(2)")
+            avg_price_elem = row.find_element(*AVG_PRICE_ELEMENT)
             if avg_price_elem:
-                avg_price_text = avg_price_elem.find_element(By.CSS_SELECTOR, "em").text
+                avg_price_text = avg_price_elem.find_element(*AVG_PRICE_TEXT).text
             else:
                 avg_price_text = "N/A"
 
             # 수익률 (세 번째 td)
             # 보유 코인 중 평가금액과 평균가가 없는 코인도 있기 때문에
             # 요소를 못찾는 예외가 아닌 n/a 를 반환하기 위함
-            # 3번째 td(수익률)  의 요소를 모두 가져옴
 
-            profit_elem_list = row.find_elements(By.CSS_SELECTOR, "td:nth-of-type(3)")
+            # 3번째 td(수익률)  의 요소를 모두 가져옴
+            profit_elem_list = row.find_elements(*PROFIT_ELEMENT)
 
             if profit_elem_list:
                 # 세 번째 td가 존재하면 리스트의 첫 번째 요소를 가져옴
                 profit_elem = profit_elem_list[0]
                 # profit_elem 안에서 각각의 자식 요소(.PriceRate--Ratio(수익률), .PriceRate--Measure(수익금액))가 있는지 확인
-                profit_ratio_list = profit_elem.find_elements(By.CSS_SELECTOR, ".PriceRate--Ratio")
+                profit_ratio_list = profit_elem.find_elements(*PROFIT_RATIO)
                 if profit_ratio_list:
                     profit_text = profit_ratio_list[0].text
                 else:
                     profit_text = "N/A"
 
-                profit_kwr_list = profit_elem.find_elements(By.CSS_SELECTOR, ".PriceRate--Measure")
+                profit_kwr_list = profit_elem.find_elements(*PROFIT_AMOUNT_KRW)
                 if profit_kwr_list:
                     profit_kwr = profit_kwr_list[0].text
                 else:
