@@ -29,3 +29,16 @@ PROFIT_ELEMENT = (By.CSS_SELECTOR, "td:nth-of-type(3)")
 PROFIT_RATIO = (By.CSS_SELECTOR, ".PriceRate--Ratio")
 # 손익금액
 PROFIT_AMOUNT_KRW = (By.CSS_SELECTOR, ".PriceRate--Measure")
+
+# My 버튼
+MY_BUTTON = (By.XPATH,"//span[text()='My']")
+
+# 내 자산 보기 버튼
+GET_MY_ASSET_BUTTON = (By.XPATH, "//span[text()='내 자산 보기']")
+
+
+# 보유 KRW
+GET_MY_KRW = (By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div/section[1]/article/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]')
+
+# 총 보유자산
+GET_TOTAL_ROWS = (By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div/section[1]/article/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/span[1]')
