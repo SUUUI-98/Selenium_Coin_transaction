@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 from datetime import datetime
 from module import login_manager, asset_parser, my_rows_parser
+from module.buy_manager import buy
 
 
 def main():
@@ -45,14 +46,17 @@ def main():
 
         for m in my_rows:
             print(
-                f" 보유 KRW :{m['assets_krw_value']:10,.0f} KRW "
-                f"| 총 보유자산 :{m['total_assets_krw']:10,.0f} KRW "
-                f"| 총 매수 :{m['total_purchases_krw']:10,.0f} KRW "
-                f"| 총 평가손익 :{m['total_profit']:10,.0f} KRW "
-                f"| 총 평가 :{m['evaluation_balance']:10}  "
-                f"| 총평가수익률 :{m['total_profit_rate']:10.2f}% "  # % 기호는 뒤에 붙여야 함
+                f"| 보유 KRW :{m['assets_krw_value']:10,.0f} KRW \n"
+                f"| 총 보유자산 :{m['total_assets_krw']:10,.0f} KRW \n"
+                f"| 총 매수 :{m['total_purchases_krw']:10,.0f} KRW \n"
+                f"| 총 평가손익 :{m['total_profit']:10,.0f} KRW \n"
+                f"| 총 평가 :{m['evaluation_balance']:10,.0f} KRW \n"
+                f"| 총평가수익률 :{m['total_profit_rate']:10.2f}% \n"  # % 기호는 뒤에 붙여야 함
                 f"| 주문가능 :{m['total_evaluation_balance']:10,.0f} KRW"
             )
+    buy(driver)
+    time.sleep(3)
+    driver.quit()
     #드라이버 종료
     driver.quit()
 

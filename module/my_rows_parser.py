@@ -51,19 +51,19 @@ def parse_profit(driver: WebDriver):
 
             # 5. 총 평가
             try:
-                # 텍스트가 비어있지 않을 때까지 대기하고 텍스트를 받아옵니다.
-                evaluation_balance = wait.until(EC.presence_of_element_located(TOTAL_EVALUATION)).text
+                # 텍스트가 비어있지 않을 때까지 대기하고 텍스트를 받아옴
+                evaluation_balance_text = wait.until(EC.presence_of_element_located(TOTAL_EVALUATION)).text
 
 
             except TimeoutException:
                 # 텍스트가 지정된 시간 내에 채워지지 않은 경우
                 print(f"row {i}: '총 평가' 텍스트 로딩 시간 초과. 0으로 처리.")
-                evaluation_balance = 0.0
+                evaluation_balance_text = 0.0
 
             except Exception as e:
                 # 기타 모든 예외 (예: 파싱 오류)
                 print(f"row {i}: '총 평가' 처리 중 알 수 없는 에러 발생: {e}")
-                evaluation_balance = 0.0
+                evaluation_balance_text = 0.0
 
             # 6. 총평가수익률
             total_profit_rate_text = wait.until(EC.presence_of_element_located(TOTAL_PROFIT_RATE)).text
@@ -75,6 +75,7 @@ def parse_profit(driver: WebDriver):
             total_assets_krw = help.hold.num(total_assets_krw_text)
             total_purchases_krw = help.hold.num(total_purchases_krw_text)
             total_profit = help.hold.num(total_profit_text)
+            evaluation_balance= help.hold.num(evaluation_balance_text)
             total_profit_rate = help.hold.num(total_profit_rate_text)
             total_evaluation_balance = help.hold.num(total_evaluation_balance_text)
 

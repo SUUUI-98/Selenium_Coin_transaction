@@ -1,13 +1,17 @@
 import re
 
 # 주어진 문자열에서 숫자만 추출해서 float 으로 변환
-# 문자가 비었을 경우 공백 리턴
+# 문자가 비었을 경우 0.0 리턴
 def num(text):
  if text is None:
      print(" 공백 발견 ")
-     return None
+     return 0.0
  # 문자의 양 끝 공백 제거
  text = text.strip()
+
+ # '-' 이 들어온 경우
+ if '-' in text:
+     return 0.0
 
  # 텍스트에 '%' 기호가 포함되어 있는지 확인 (수익률과 같은 경우)
  if '%' in text:
@@ -18,7 +22,11 @@ def num(text):
  cleaned = re.sub(r'[^0-9\-\.,]', '', text).replace(',', '').strip()
 
  try:
+     if not cleaned:
+         return 0.0
+
      return float(cleaned)
+
 
  except ValueError:
      # 숫자로 변환할 수 없는 경우 원래의 텍스트로 리턴

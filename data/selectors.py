@@ -57,3 +57,33 @@ TOTAL_PROFIT_RATE = (By.XPATH, ".//span[contains(text(), '총평가수익률')]/
 
 # 주문가능
 AVAILABLE_BALANCE = (By.XPATH, ".//span[contains(text(), '주문가능')]/../following-sibling::div/span[1]")
+
+# 거래소 버튼
+EXCHANGE_TAB = (By.XPATH,"//a[text()='거래소']")
+
+# DOGE
+DOGE_COIN = (By.XPATH, ".//strong[contains(text(), '도지코인')]")
+
+# 매수 탭
+BUY_TAB= (By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div/section[1]/div[2]/div[2]/article[1]/span/ul/li[1]/a')
+
+# #시장가 매수 버튼
+MARKET_BUY= (By.XPATH, ".//span[contains(text(), '시장가')]")
+
+# 매수 금액 input
+PRICE_INPUT_FIELD=(By.CSS_SELECTOR, "input[data-testid='price-order-total-input']")
+
+# 매수 금액 입력값
+INPUT_VALUE = "5000"
+
+# 매수 버튼
+BUY_BUTTON = (By.XPATH, ".//a[text()='초기화']/following-sibling::a[1]")
+
+#확인 버튼
+DONE_BUTTON = (By.XPATH,".//span[contains(text(), '확인')]")
+
+#거래내역 탭
+HISTORY_TAB= (By.XPATH,".//a[text()='거래내역']")
+
+# 체결 라디오 박스
+TRADE_EXECUTION = (By.XPATH, ".//span[text()='체결']")
