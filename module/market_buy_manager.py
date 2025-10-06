@@ -1,8 +1,5 @@
 import time
-
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-
 from selenium.common import TimeoutException, NoSuchElementException
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
@@ -12,7 +9,7 @@ from data.selectors import EXCHANGE_TAB, DOGE_COIN, BUY_TAB, MARKET_BUY, PRICE_I
     DONE_BUTTON, HISTORY_TAB, TRADE_EXECUTION
 
 
-def buy(driver: WebDriver):
+def market_buy(driver: WebDriver):
     try:
         wait = WebDriverWait(driver, 30)
         # 거래소 화면 이동
@@ -47,7 +44,7 @@ def buy(driver: WebDriver):
         print("3. 입력 필드 선택 성공 ")
         # 4.매수 금액 5000 입력
         price_input.send_keys(INPUT_VALUE)
-        print(f" 4. 입력 필드에 값 '{INPUT_VALUE}'을(를) 성공적으로 입력했습니다.")
+        print(f" 4. 입력 필드에 값 '{INPUT_VALUE}'을(를) 성공적으로 입력")
 
         driver.find_element(*BUY_BUTTON).click()
         print("5. 매수 버튼 클릭 완료 ")
@@ -62,13 +59,14 @@ def buy(driver: WebDriver):
         wait.until(EC.element_to_be_clickable(TRADE_EXECUTION)).click()
         print("8. 시장가 매수 체결 내역 확인 완료 ")
         time.sleep(5)
-
+        return True
 
     except NoSuchElementException as e:
         print(f" 요소찾기 실패  :{e}")
-
+        return False
     except Exception as e:
         print(f"매수 작업 중 에러 발생 :{e}")
-
+        return False
     except TimeoutException:
         print("로딩 시간 초과 ")
+        return False

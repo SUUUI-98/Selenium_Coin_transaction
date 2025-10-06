@@ -87,3 +87,13 @@ HISTORY_TAB= (By.XPATH,".//a[text()='거래내역']")
 
 # 체결 라디오 박스
 TRADE_EXECUTION = (By.XPATH, ".//span[text()='체결']")
+
+# 체결 목록에서 가져올 요소들을 한번에 담는 공통 부모 요소
+ORDER_CONTAINER_XPATH = (By.XPATH,"//article/div[@class='max']/div[3]")
+
+# 날짜와 시간 요소의 바로 위 부모 요소
+ROW_LIST_PARENT_XPATH = (By.XPATH, "//div[contains(@class, 'css-1ljiip')]/parent::div")
+# 공통 부모 요소에서  날짜와 시간을 담는 요소
+ORDER_ITEM_RELATIVE_XPATH =(By.XPATH, "//div[contains(@class, 'css-1ljiip')]")
+
+ORDER_ITEM_COIN_NAME_DIV = (By.XPATH, "//div[contains(@class, 'alignCenter css-1ljiip')]")
