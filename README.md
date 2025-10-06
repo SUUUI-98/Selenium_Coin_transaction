@@ -1,4 +1,13 @@
-### 간단한 자동화 프로젝트 (UPbit web) 
+# 간단한 자동화 프로젝트 (UPbit web) 
+
+[![Project Status](https://img.shields.io/badge/Status-[진행중]-blue)]()
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/SUUUI-98/Selenium_Coin_transaction_upbit
+)](https://github.com/SUUUI-98/Selenium_Coin_transaction_upbit/commits)
+
+
+[![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white)](https://www.selenium.dev/)
+
 
 
 # 1. 자동화 시나리오
