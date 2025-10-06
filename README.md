@@ -10,7 +10,7 @@
 
 
 
-# 1. 자동화 시나리오
+## 1. 자동화 시나리오
    1. 웹 페이지 접속 
    2. 로그인 버튼 선택 
    3. QR 로그인(모바일 수동)
@@ -24,19 +24,19 @@
 
 
 
-# 2. 사전조건 
+## 2. 사전조건 
    1. 회원 계좌 인증 완료된 회원
    2. 계좌 잔액 1만원 이상 보유
 
 
 
-# 3. 프로젝트 학습 목표 
+## 3. 프로젝트 학습 목표 
    1. Selenium 을 사용한 테스트 자동화 학습과 파이썬 학습
    2. DOM 요소 분석 학습
 
 
 
-# 4. 프로젝트 진행 과정 포스팅(2025.10.02 - ing)
+## 4. 프로젝트 진행 과정 포스팅(2025.10.02 - ing)
    1. 로그인(XPath- 절대경로&상대경로) : https://www.notion.so/XPath-28345e7562a5801980f6d544de693f90?source=copy_link
    2. 보유 자산 확인 후 출력시키기(CSS-Selector) : https://www.notion.so/CSS-Selector-28345e7562a580268f43dc42216243c6?source=copy_link
    3. 포트폴리오 확인 후 로그 출력시키기(XPath 응용) : https://www.notion.so/XPath-28345e7562a5806fb93ae6500fd0f327?source=copy_link
