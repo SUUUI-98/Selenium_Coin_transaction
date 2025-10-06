@@ -41,11 +41,18 @@ def main():
     my_rows = my_rows_parser.parse_profit(driver)
     if my_rows:
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print(f"===  내 자산 목록 스냅샷 ({current_time}) ===")
+        print(f"===  My - 내 자산 목록 스냅샷 ({current_time}) ===")
 
         for m in my_rows:
-            print(f" 보유 KRW {m['my_holding_krw']:10} | 총 보유자산: {m['total_rows']:10} ")
-
+            print(
+                f" 보유 KRW :{m['assets_krw_value']:10,.0f} KRW "
+                f"| 총 보유자산 :{m['total_assets_krw']:10,.0f} KRW "
+                f"| 총 매수 :{m['total_purchases_krw']:10,.0f} KRW "
+                f"| 총 평가손익 :{m['total_profit']:10,.0f} KRW "
+                f"| 총 평가 :{m['evaluation_balance']:10}  "
+                f"| 총평가수익률 :{m['total_profit_rate']:10.2f}% "  # % 기호는 뒤에 붙여야 함
+                f"| 주문가능 :{m['total_evaluation_balance']:10,.0f} KRW"
+            )
     #드라이버 종료
     driver.quit()
 

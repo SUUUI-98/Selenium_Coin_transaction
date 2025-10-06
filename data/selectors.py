@@ -38,7 +38,22 @@ GET_MY_ASSET_BUTTON = (By.XPATH, "//span[text()='내 자산 보기']")
 
 
 # 보유 KRW
-GET_MY_KRW = (By.XPATH, ".//span[contains(text(), '보유 KRW')]/../following-sibling::div/span[1]")
+MY_KRW = (By.XPATH, ".//span[contains(text(), '보유 KRW')]/../following-sibling::div/span[1]")
 
 # 총 보유자산
-GET_TOTAL_ROWS = (By.XPATH, ".//span[contains(text(), '총 보유자산')]/../following-sibling::div/span[1]")
+TOTAL_ROWS = (By.XPATH, ".//span[contains(text(), '총 보유자산')]/../following-sibling::div/span[1]")
+
+# 총 매수
+TOTAL_PURCHASE = (By.XPATH, ".//span[contains(text(), '총 매수')]/../following-sibling::div/span[1]")
+
+# 총 평가손익
+TOTAL_PROFIT_LOSS = (By.XPATH, ".//span[contains(text(), '총평가손익')]/../following-sibling::div/span[1]")
+
+# 총 평가
+TOTAL_EVALUATION = (By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div/section[1]/article/div[2]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[2]/span[1]')
+
+# 총평가수익률
+TOTAL_PROFIT_RATE = (By.XPATH, ".//span[contains(text(), '총평가수익률')]/../following-sibling::div/span[1]")
+
+# 주문가능
+AVAILABLE_BALANCE = (By.XPATH, ".//span[contains(text(), '주문가능')]/../following-sibling::div/span[1]")

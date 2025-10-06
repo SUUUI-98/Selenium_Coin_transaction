@@ -4,6 +4,7 @@ import re
 # 문자가 비었을 경우 공백 리턴
 def num(text):
  if text is None:
+     print(" 공백 발견 ")
      return None
  # 문자의 양 끝 공백 제거
  text = text.strip()
