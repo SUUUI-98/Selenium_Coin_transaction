@@ -67,7 +67,7 @@ DOGE_COIN = (By.XPATH, ".//strong[contains(text(), '도지코인')]")
 # 매수 탭
 BUY_TAB= (By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div/section[1]/div[2]/div[2]/article[1]/span/ul/li[1]/a')
 
-# #시장가 매수 버튼
+# 시장가 매수 버튼
 MARKET_BUY= (By.XPATH, ".//span[contains(text(), '시장가')]")
 
 # 매수 금액 input

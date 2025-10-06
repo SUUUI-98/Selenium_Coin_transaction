@@ -23,7 +23,6 @@ def buy(driver: WebDriver):
 
         # 매수 탭 클릭
         try:
-
             wait.until(EC.presence_of_element_located(BUY_TAB)).click()
             print("1. 매수 탭 클릭 성공")
 
@@ -54,7 +53,7 @@ def buy(driver: WebDriver):
         print("5. 매수 버튼 클릭 완료 ")
 
         # 팝업창의 확인 버튼 클릭
-        wait.until(EC.presence_of_element_located(DONE_BUTTON)).click()
+        wait.until(EC.element_to_be_clickable(DONE_BUTTON)).click()
         print("6. 시장가 매수 완료")
 
         wait.until(EC.element_to_be_clickable(HISTORY_TAB)).click()
