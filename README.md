@@ -41,3 +41,4 @@
    2. 보유 자산 확인 후 출력시키기(CSS-Selector) : https://www.notion.so/CSS-Selector-28345e7562a580268f43dc42216243c6?source=copy_link
    3. 포트폴리오 확인 후 로그 출력시키기(XPath 응용) : https://www.notion.so/XPath-28345e7562a5806fb93ae6500fd0f327?source=copy_link
    4. DOGE 시장가 매수 (ExpectedConditions 함수) : https://www.notion.so/DOGE-ExpectedConditions-28445e7562a580cca66acaf80248c0ce?source=copy_link
+   5. 체결 내역 출력하기 (Index 로 요소 접근하기) : https://www.notion.so/Index-28445e7562a580259166c424a0cd137e?source=copy_link
