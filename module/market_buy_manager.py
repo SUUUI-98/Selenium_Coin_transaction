@@ -6,7 +6,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 
 from data.selectors import EXCHANGE_TAB, DOGE_COIN, BUY_TAB, MARKET_BUY, PRICE_INPUT_FIELD, INPUT_VALUE, BUY_BUTTON, \
-    DONE_BUTTON, HISTORY_TAB, TRADE_EXECUTION
+    DONE_BUTTON, HISTORY_TAB, TRADE_EXECUTION, DIM_LAYER_SELECTOR
 
 
 def market_buy(driver: WebDriver):
@@ -20,7 +20,7 @@ def market_buy(driver: WebDriver):
 
         # 매수 탭 클릭
         try:
-            wait.until(EC.presence_of_element_located(BUY_TAB)).click()
+            wait.until(EC.element_to_be_clickable(BUY_TAB)).click()
             print("1. 매수 탭 클릭 성공")
 
         except NoSuchElementException:
@@ -30,7 +30,7 @@ def market_buy(driver: WebDriver):
 
         time.sleep(2)
         # 시장가 매수 선택
-        wait.until(EC.presence_of_element_located(MARKET_BUY)).click()
+        wait.until(EC.element_to_be_clickable(MARKET_BUY)).click()
         print("2. 시장가 선택 성공 ")
         time.sleep(2)
 
@@ -52,6 +52,11 @@ def market_buy(driver: WebDriver):
         # 팝업창의 확인 버튼 클릭
         wait.until(EC.element_to_be_clickable(DONE_BUTTON)).click()
         print("6. 시장가 매수 완료")
+
+        # time.sleep(3)
+        # 레이어가 사라질때까지 대기
+        # wait.until(EC.invisibility_of_element_located(DIM_LAYER_SELECTOR))
+        # print("딤레이어 사라짐 이동 준비 ")
 
         wait.until(EC.element_to_be_clickable(HISTORY_TAB)).click()
         print("7. 거래내역 클릭 완료 , 거래내역으로 이동 ")

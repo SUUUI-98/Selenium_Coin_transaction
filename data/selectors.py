@@ -80,7 +80,7 @@ INPUT_VALUE = "5000"
 BUY_BUTTON = (By.XPATH, ".//a[text()='초기화']/following-sibling::a[1]")
 
 #확인 버튼
-DONE_BUTTON = (By.XPATH,".//span[contains(text(), '확인')]")
+DONE_BUTTON = (By.XPATH, "//a[./span[text()='확인']]")
 
 #거래내역 탭
 HISTORY_TAB= (By.XPATH,".//a[text()='거래내역']")
@@ -93,7 +93,26 @@ ORDER_CONTAINER_XPATH = (By.XPATH,"//article/div[@class='max']/div[3]")
 
 # 날짜와 시간 요소의 바로 위 부모 요소
 ROW_LIST_PARENT_XPATH = (By.XPATH, "//div[contains(@class, 'css-1ljiip')]/parent::div")
-# 공통 부모 요소에서  날짜와 시간을 담는 요소
+
+# 가져와야할 자식 요소들의 공통된 속성을 담는 요소
 ORDER_ITEM_RELATIVE_XPATH =(By.XPATH, "//div[contains(@class, 'css-1ljiip')]")
 
-ORDER_ITEM_COIN_NAME_DIV = (By.XPATH, "//div[contains(@class, 'alignCenter css-1ljiip')]")
+# 매도 탭
+SELL_TAB= (By.XPATH, ".//a[text()='매도']")
+
+# 주문 가능 수량
+AVAILABLE_ORDER = (By.XPATH, ".//div[contains(text(), '주문 가능')]/../following-sibling::div/span[1]")
+
+# 주문 가능 코인명
+AVAILABLE_ORDER_COIN_NAME = (By.XPATH, ".//div[contains(text(), '주문 가능')/../following-sibling::div/span[2]]")
+
+#주문 가능 원화
+AVAILABLE_ORDER_KRW = (By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div/section[1]/div[2]/div[2]/article[1]/div/div[1]/div[2]/div[2]/div[2]/span')
+
+# 주문수량 100%
+ORDER_100_SELECT = (By.XPATH, ".//a[text()='100%']")
+
+# 매도 버튼
+SELL_BUTTON = (By.XPATH, "//a[@title='초기화']/following-sibling::a[contains(text(), '매도')]")
+
+DIM_LAYER_SELECTOR = (By.XPATH, "//div[@data-testid='dim']")

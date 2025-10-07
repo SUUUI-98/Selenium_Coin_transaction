@@ -3,7 +3,7 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
-
+import help.hold
 from data.selectors import ORDER_CONTAINER_XPATH, ROW_LIST_PARENT_XPATH, \
     ORDER_ITEM_RELATIVE_XPATH
 
@@ -18,12 +18,12 @@ def trade_execution_parser(driver: WebDriver):
             EC.presence_of_element_located(ROW_LIST_PARENT_XPATH))
         print("반복되는 주문 목록의 부모 요소 찾기 성공")
 
-        # 2. 부모 요소 내부에서 모든 개별 주문 항목(Div)을 리스트로 가져옵니다.
-        # row_list는 이제 for 루프에서 사용할 수 있는 [WebElement, WebElement, ...] 리스트입니다.
+        # 2. 부모 요소 내부에서 모든 개별 주문 항목(Div)을 리스트로 가져옴
+        # row_list는 이제 for 루프에서 사용할 수 있는 [WebElement, WebElement, ...] 리스트임
         row_list = parent_container.find_elements(*ORDER_ITEM_RELATIVE_XPATH)
 
         if len(row_list) < 4:
-            print("경고: 주문 항목이 부족하거나 구조가 예상과 다릅니다. (최소 4개 필요)")
+            print("경고: 주문 항목이 부족하거나 구조가 예상과 다름 (최소 4개 필요)")
             return
 
         print(f"총 {len(row_list)}개의 데이터 Div를 찾았습니다. 추출 시작.")
@@ -87,11 +87,11 @@ def trade_execution_parser(driver: WebDriver):
         for data in extracted_data:
             try:
                 # 쉼표 제거 및 float 변환
-                price_val = float(data['체결가격'].replace(',', ''))
-                quantity_val = float(data['체결수량'].replace(',', ''))
+                price_val = help.hold.num(data['체결가격'])
+                quantity_val = help.hold.num(data['체결수량'])
 
                 # 체결금액은 이미 float 문자열이므로 바로 사용
-                amount_val = float(data['체결금액'])
+                amount_val = help.hold.num(data['체결금액'])
 
                 # f-string 형식 지정:
                 # 날짜/시간/코인명/구분은 좌측 정렬 (<)

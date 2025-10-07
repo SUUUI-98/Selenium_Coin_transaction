@@ -5,6 +5,7 @@ import time
 from datetime import datetime
 from module import login_manager, asset_parser, my_rows_parser
 from module.market_buy_manager import market_buy
+from module.market_sell_manager import market_sell
 from module.trade_execution_parser import trade_execution_parser
 
 
@@ -61,6 +62,8 @@ def main():
         driver.quit()
         return
 
+    trade_execution_parser(driver)
+    market_sell(driver)
     trade_execution_parser(driver)
 
     time.sleep(3)
