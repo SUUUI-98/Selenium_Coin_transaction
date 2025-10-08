@@ -9,8 +9,11 @@
 [![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white)](https://www.selenium.dev/)
 
 
+<img width="984" height="583" alt="스크린샷 2025-10-08 오후 11 54 46" src="https://github.com/user-attachments/assets/f60e6ad2-f71f-48a7-bec8-e6a86aef6ac6" />
+
 ## 시현영상 :
 https://youtu.be/8N7y9cGIhKE 
+
 
 
 ## 1. 자동화 시나리오
