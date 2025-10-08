@@ -11,8 +11,6 @@ import help.hold
 
 def parse_profit(driver: WebDriver):
 
-
-
     try:
         wait = WebDriverWait(driver, 30)
         # My 버튼 클릭

@@ -74,7 +74,7 @@ MARKET_BUY= (By.XPATH, ".//span[contains(text(), '시장가')]")
 PRICE_INPUT_FIELD=(By.CSS_SELECTOR, "input[data-testid='price-order-total-input']")
 
 # 매수 금액 입력값
-INPUT_VALUE = "5000"
+INPUT_VALUE = "5500"
 
 # 매수 버튼
 BUY_BUTTON = (By.XPATH, ".//a[text()='초기화']/following-sibling::a[1]")
@@ -101,13 +101,13 @@ ORDER_ITEM_RELATIVE_XPATH =(By.XPATH, "//div[contains(@class, 'css-1ljiip')]")
 SELL_TAB= (By.XPATH, ".//a[text()='매도']")
 
 # 주문 가능 수량
-AVAILABLE_ORDER = (By.XPATH, ".//div[contains(text(), '주문 가능')]/../following-sibling::div/span[1]")
+AVAILABLE_ORDER = (By.XPATH, "//div[text()='주문가능']/following-sibling::div/span[1]")
 
 # 주문 가능 코인명
-AVAILABLE_ORDER_COIN_NAME = (By.XPATH, ".//div[contains(text(), '주문 가능')/../following-sibling::div/span[2]]")
+AVAILABLE_ORDER_COIN_NAME = (By.XPATH, "//div[text()='주문가능']/following-sibling::div/span[2]")
 
 #주문 가능 원화
-AVAILABLE_ORDER_KRW = (By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div/section[1]/div[2]/div[2]/article[1]/div/div[1]/div[2]/div[2]/div[2]/span')
+AVAILABLE_ORDER_KRW = (By.XPATH, "//span[contains(@class, 'font_3')]")
 
 # 주문수량 100%
 ORDER_100_SELECT = (By.XPATH, ".//a[text()='100%']")
@@ -115,4 +115,8 @@ ORDER_100_SELECT = (By.XPATH, ".//a[text()='100%']")
 # 매도 버튼
 SELL_BUTTON = (By.XPATH, "//a[@title='초기화']/following-sibling::a[contains(text(), '매도')]")
 
+# 팝업창 딤레이어
 DIM_LAYER_SELECTOR = (By.XPATH, "//div[@data-testid='dim']")
+
+#매도 금액 input
+SELL_PRICE_INPUT_FIELD = (By.CSS_SELECTOR, "input[data-testid='order-volume-input']")

@@ -56,16 +56,20 @@ def main():
                 f"| 총평가수익률 :{m['total_profit_rate']:10.2f}% \n"  # % 기호는 뒤에 붙여야 함
                 f"| 주문가능 :{m['total_evaluation_balance']:10,.0f} KRW"
             )
-    # DOGE 시장가 매수
 
+    # DOGE 시장가 매수
     if not market_buy(driver):
         driver.quit()
         return
-
+    # 거래내역 리스트 파싱
     trade_execution_parser(driver)
-    market_sell(driver)
+    # DOGE 시장가 매도
+    if not market_sell(driver):
+        driver.quit()
+        return
+    # 거래내역 리스트 파싱
     trade_execution_parser(driver)
-
+    # 종료
     time.sleep(3)
 
     #드라이버 종료
