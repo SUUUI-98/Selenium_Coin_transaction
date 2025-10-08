@@ -9,6 +9,9 @@
 [![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white)](https://www.selenium.dev/)
 
 
+## 시현영상 :
+https://youtu.be/8N7y9cGIhKE 
+
 
 ## 1. 자동화 시나리오
    1. 웹 페이지 접속 
