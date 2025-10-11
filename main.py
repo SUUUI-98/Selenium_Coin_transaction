@@ -39,9 +39,8 @@ def main():
 
         # 4. DOGE 시장가 매수
         print("--- DOGE 시장가 매수 시도 ---")
-        if not market_buy(driver):
-            print_trade_failure("DOGE 시장가 매수")
-            return
+        trade_buy_success = market_buy(driver)
+        print_trade_failure(trade_buy_success)
 
         time.sleep(3)
 
@@ -54,9 +53,10 @@ def main():
 
         # 7. DOGE 시장가 매도
         print("--- DOGE 시장가 매도 시도 ---")
-        trade_success = market_sell(driver)
-        print_trade_failure(trade_success)
+        trade_sell_success = market_sell(driver)
+        print_trade_failure(trade_sell_success)
 
+        time.sleep(3)
         # 8. 거래내역 리스트 파싱 (출력은 함수 내부에서 처리 가정)
         trade_execution_parser(driver)
 

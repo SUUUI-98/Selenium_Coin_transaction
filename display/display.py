@@ -59,7 +59,7 @@ def print_total_asset_report(my_rows: List[Dict[str, float]]):
 
 def print_trade_failure(is_success: bool):
     if not is_success:
-       print(f" {str} 작업에 실패하여 스크립트를 종료합니다.")
+       print(" 매수/매도 작업 실패 ")
        return
     print("")
-# TODO : 매도 결과 값 출력??
+# TODO : 함수 매수/매도 나눠서 만들기 : 결과값 출력
