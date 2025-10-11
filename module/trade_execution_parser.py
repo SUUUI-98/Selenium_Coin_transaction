@@ -53,7 +53,6 @@ def trade_execution_parser(driver: WebDriver):
                 amount = price_div.find_element(By.XPATH, "./span[2]").text
 
                 # 3-4. Div 4 (체결금액/수수료) 추출
-                # (구조에 따라 span[1], span[2] 등으로 추출)
                 quantity = amount_div.find_element(By.XPATH, "./span[1]").text
 
                 extracted_data.append({
@@ -99,9 +98,9 @@ def trade_execution_parser(driver: WebDriver):
 
                 output = (
                     f"| {data['날짜']:<12} | {data['시간']:<6} | {data['코인명']:<10} | {data['구분']:<4} | "
-                    f"{price_val:10,.1f} | "  # 가격은 소수점 1자리까지 표시 (예시 데이터 기반)
-                    f"{quantity_val:10,.0f} | "  # 수량은 정수로 표시
-                    f"{amount_val:14.8f} |"  # 금액은 소수점 8자리까지 표시 (정밀한 값)
+                    f"{price_val:10,.1f} | " 
+                    f"{quantity_val:10,.0f} | " 
+                    f"{amount_val:14.8f} |"
                 )
                 print(output)
 

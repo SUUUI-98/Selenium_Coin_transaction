@@ -20,7 +20,7 @@ def print_holdings_summary(holdings_data: List[Dict[str, Any]]):
     print(f"==================================================")
 
     for r in holdings_data:
-        # 데이터가 None일 경우 오류 방지를 위해 임시로 0으로 대체 (실제로는 파싱 단계에서 처리되어야 함)
+        # 데이터가 None일 경우 오류 방지를 위해 임시로 0으로 대체
         coin = r.get('코인명', 'N/A')
         holding_raw = r.get('보유', 0)
         holding_krw = r.get('평가금액', 0)
@@ -62,4 +62,4 @@ def print_trade_failure(is_success: bool):
        print(" 매수/매도 작업 실패 ")
        return
     print("")
-# TODO : 함수 매수/매도 나눠서 만들기 : 결과값 출력
+# TODO : 함수 매수/매도 나눠서 만들기 db 커넥트 이후

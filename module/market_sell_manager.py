@@ -81,10 +81,7 @@ def market_sell(driver: WebDriver):
 
     except NoSuchElementException as e:
         print(f"요소 찾기 실패 : {e}")
-        try:
-            driver.quit()
-        except Exception:
-            pass
+        driver.quit()
         return False
 
     except Exception as e:
