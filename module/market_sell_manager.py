@@ -2,7 +2,7 @@ from selenium.common import NoSuchElementException
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 import time
-from data.selectors import SELL_TAB, MARKET_BUY, AVAILABLE_ORDER, AVAILABLE_ORDER_COIN_NAME, AVAILABLE_ORDER_KRW, \
+from selector.selectors import SELL_TAB, MARKET_BUY, AVAILABLE_ORDER, AVAILABLE_ORDER_COIN_NAME, AVAILABLE_ORDER_KRW, \
     ORDER_100_SELECT, SELL_BUTTON, DONE_BUTTON, HISTORY_TAB, TRADE_EXECUTION, DIM_LAYER_SELECTOR, \
     SELL_PRICE_INPUT_FIELD, EXCHANGE_TAB, DOGE_COIN
 from selenium.webdriver.support import expected_conditions as EC

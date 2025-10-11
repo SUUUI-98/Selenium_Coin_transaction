@@ -5,7 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.expected_conditions import element_located_to_be_selected
 from selenium.webdriver.support.wait import WebDriverWait
 
-from data.selectors import LOGIN_BUTTON, QR_LOGIN_BUTTON, HOLDINGS_LINK, MY_BUTTON, USER_NAME
+from selector.selectors import LOGIN_BUTTON, QR_LOGIN_BUTTON, HOLDINGS_LINK, MY_BUTTON, USER_NAME, DONE_BUTTON, \
+    LOGOUT_BUTTON
 
 
 #로그인 버튼 -> qr 로그인
@@ -36,3 +37,12 @@ def perform_login(driver: WebDriver):
         return False
 
     return True
+
+
+def logout(driver: WebDriver):
+    try:
+        driver.find_element(*MY_BUTTON).click()
+        driver.find_element(*LOGOUT_BUTTON).click()
+        driver.find_element(*DONE_BUTTON).click()
+    except Exception as e:
+        print(f"로그 아웃 중 오류 발생 : {e}")

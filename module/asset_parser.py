@@ -3,7 +3,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from data.selectors import COIN_NAME, HOLDING_ELEMENT, HOLDING_QUANTITY, HOLDING_AMOUNT_KRW, \
+from selector.selectors import COIN_NAME, HOLDING_ELEMENT, HOLDING_QUANTITY, HOLDING_AMOUNT_KRW, \
     AVG_PRICE_ELEMENT, AVG_PRICE_TEXT, PROFIT_ELEMENT, PROFIT_RATIO, PROFIT_AMOUNT_KRW
 import help.hold
 

@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 import help.hold
-from data.selectors import ORDER_CONTAINER_XPATH, ROW_LIST_PARENT_XPATH, \
+from selector.selectors import ORDER_CONTAINER_XPATH, ROW_LIST_PARENT_XPATH, \
     ORDER_ITEM_RELATIVE_XPATH
 
 
@@ -53,7 +53,6 @@ def trade_execution_parser(driver: WebDriver):
                 amount = price_div.find_element(By.XPATH, "./span[2]").text
 
                 # 3-4. Div 4 (체결금액/수수료) 추출
-                # (구조에 따라 span[1], span[2] 등으로 추출)
                 quantity = amount_div.find_element(By.XPATH, "./span[1]").text
 
                 extracted_data.append({
@@ -93,15 +92,12 @@ def trade_execution_parser(driver: WebDriver):
                 # 체결금액은 이미 float 문자열이므로 바로 사용
                 amount_val = help.hold.num(data['체결금액'])
 
-                # f-string 형식 지정:
-                # 날짜/시간/코인명/구분은 좌측 정렬 (<)
-                # 가격/수량/금액은 숫자이므로 우측 정렬 (>) 및 쉼표 형식 지정 (,)
 
                 output = (
                     f"| {data['날짜']:<12} | {data['시간']:<6} | {data['코인명']:<10} | {data['구분']:<4} | "
-                    f"{price_val:10,.1f} | "  # 가격은 소수점 1자리까지 표시 (예시 데이터 기반)
+                    f"{price_val:10,.1f} | "  # 가격은 소수점 1자리까지 표시
                     f"{quantity_val:10,.0f} | "  # 수량은 정수로 표시
-                    f"{amount_val:14.8f} |"  # 금액은 소수점 8자리까지 표시 (정밀한 값)
+                    f"{amount_val:14.8f} |"  # 금액은 소수점 8자리까지 표시
                 )
                 print(output)
 

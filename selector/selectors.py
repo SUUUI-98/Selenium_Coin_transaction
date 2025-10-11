@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 # 로그인 관련 요소
 LOGIN_BUTTON = (By.XPATH, "//span[text()='로그인']")
 QR_LOGIN_BUTTON = (By.XPATH, "//a[text()='QR코드 로그인']")
+LOGOUT_BUTTON =  (By.XPATH, "//span[text()='로그아웃']")
 
 # 보유 자산 페이지 관련 요소
 HOLDINGS_LINK = (By.XPATH, "//a[text()='보유']")
@@ -74,7 +75,7 @@ BUY_TAB= (By.XPATH, '//*[@id="UpbitLayout"]/div[3]/div/section[1]/div[2]/div[2]/
 MARKET_BUY= (By.XPATH, ".//span[contains(text(), '시장가')]")
 
 # 매수 금액 input
-PRICE_INPUT_FIELD=(By.CSS_SELECTOR, "input[data-testid='price-order-total-input']")
+PRICE_INPUT_FIELD=(By.CSS_SELECTOR, "input[selector-testid='price-order-total-input']")
 
 # 매수 금액 입력값
 INPUT_VALUE = "5500"
@@ -119,7 +120,7 @@ ORDER_100_SELECT = (By.XPATH, ".//a[text()='100%']")
 SELL_BUTTON = (By.XPATH, "//a[@title='초기화']/following-sibling::a[contains(text(), '매도')]")
 
 # 팝업창 딤레이어
-DIM_LAYER_SELECTOR = (By.XPATH, "//div[@data-testid='dim']")
+DIM_LAYER_SELECTOR = (By.XPATH, "//div[@selector-testid='dim']")
 
 #매도 금액 input
-SELL_PRICE_INPUT_FIELD = (By.CSS_SELECTOR, "input[data-testid='order-volume-input']")
+SELL_PRICE_INPUT_FIELD = (By.CSS_SELECTOR, "input[selector-testid='order-volume-input']")

@@ -4,7 +4,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 import time
 from selenium.webdriver.support import expected_conditions as EC
-from data.selectors import MY_BUTTON, GET_MY_ASSET_BUTTON, MY_KRW, TOTAL_ROWS, TOTAL_PURCHASE, TOTAL_EVALUATION, \
+from selector.selectors import MY_BUTTON, GET_MY_ASSET_BUTTON, MY_KRW, TOTAL_ROWS, TOTAL_PURCHASE, TOTAL_EVALUATION, \
     AVAILABLE_BALANCE, TOTAL_PROFIT_LOSS, TOTAL_PROFIT_RATE
 import help.hold
 
@@ -30,6 +30,7 @@ def parse_profit(driver: WebDriver):
         print(f" 요소를 못찾음  ", e)
         my_rows = []
         driver.quit()
+        return my_rows
 
     my_results = []
 
@@ -93,4 +94,4 @@ def parse_profit(driver: WebDriver):
 
         return my_results
 
-    return True
+    return None

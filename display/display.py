@@ -39,7 +39,7 @@ def print_total_asset_report(my_rows: List[Dict[str, float]]):
         print(" My 페이지 자산 정보가 불러오기 실패.")
         return
 
-    # my_rows는 단일 항목 리스트라고 가정
+    # my_rows는 단일 항목 리스트
     m = my_rows[0]
 
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -61,5 +61,5 @@ def print_trade_failure(is_success: bool):
     if not is_success:
        print(" 매수/매도 작업 실패 ")
        return
-    print("")
-# TODO : 함수 매수/매도 나눠서 만들기 : 결과값 출력
+    print("매수 / 매도 성공")
+# TODO : 함수 매수/매도 나눠서 만들기 : 결과값 출력 (DB 연동 이후 데이터 가져와서 출력 )

@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 
-from data.selectors import EXCHANGE_TAB, DOGE_COIN, BUY_TAB, MARKET_BUY, PRICE_INPUT_FIELD, INPUT_VALUE, BUY_BUTTON, \
+from selector.selectors import EXCHANGE_TAB, DOGE_COIN, BUY_TAB, MARKET_BUY, PRICE_INPUT_FIELD, INPUT_VALUE, BUY_BUTTON, \
     DONE_BUTTON, HISTORY_TAB, TRADE_EXECUTION, DIM_LAYER_SELECTOR
 
 
@@ -32,17 +32,15 @@ def market_buy(driver: WebDriver):
         # 시장가 매수 선택
         wait.until(EC.element_to_be_clickable(MARKET_BUY)).click()
         print("2. 시장가 선택 성공 ")
-        time.sleep(2)
 
         # 금액을 입력할 input 창 선택
         price_input: WebElement = wait.until(
-            EC.presence_of_element_located(PRICE_INPUT_FIELD)
-        )
+            EC.element_to_be_clickable(PRICE_INPUT_FIELD))
 
         # 입력 필드 초기화
         price_input.clear()
         print("3. 입력 필드 선택 성공 ")
-        # 4.매수 금액 5000 입력
+        # 4.매수 금액 5500 입력
         price_input.send_keys(INPUT_VALUE)
         print(f" 4. 입력 필드에 값 '{INPUT_VALUE}'을(를) 성공적으로 입력")
 
