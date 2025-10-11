@@ -33,6 +33,9 @@ PROFIT_AMOUNT_KRW = (By.CSS_SELECTOR, ".PriceRate--Measure")
 # My 버튼
 MY_BUTTON = (By.XPATH,"//span[text()='My']")
 
+# My 버튼이 속한 div의 다음 형제 div 를 선택 -> 텍스트가 있는 span 태그를 찾음
+USER_NAME = (By.XPATH, "//span[text()='My']/../following-sibling::div//span[string-length(text()) > 0]")
+
 # 내 자산 보기 버튼
 GET_MY_ASSET_BUTTON = (By.XPATH, "//span[text()='내 자산 보기']")
 

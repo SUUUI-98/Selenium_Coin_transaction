@@ -3,8 +3,8 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 import time
 from data.selectors import SELL_TAB, MARKET_BUY, AVAILABLE_ORDER, AVAILABLE_ORDER_COIN_NAME, AVAILABLE_ORDER_KRW, \
-    ORDER_100_SELECT, SELL_BUTTON, PRICE_INPUT_FIELD, DONE_BUTTON, HISTORY_TAB, TRADE_EXECUTION, DIM_LAYER_SELECTOR, \
-    SELL_PRICE_INPUT_FIELD
+    ORDER_100_SELECT, SELL_BUTTON, DONE_BUTTON, HISTORY_TAB, TRADE_EXECUTION, DIM_LAYER_SELECTOR, \
+    SELL_PRICE_INPUT_FIELD, EXCHANGE_TAB, DOGE_COIN
 from selenium.webdriver.support import expected_conditions as EC
 
 
@@ -12,6 +12,11 @@ def market_sell(driver: WebDriver):
     wait = WebDriverWait(driver, 30)
 
     try:
+        # 거래소 화면 이동
+        driver.find_element(*EXCHANGE_TAB).click()
+        time.sleep(3)
+        # 도지코인 거래소로 이동
+        driver.find_element(*DOGE_COIN).click()
         # 매도 탭 클릭
         driver.find_element(*SELL_TAB).click()
         time.sleep(3)
@@ -66,7 +71,7 @@ def market_sell(driver: WebDriver):
             print("7. 거래내역 클릭 완료, 거래내역으로 이동 ")
 
             wait.until(EC.element_to_be_clickable(TRADE_EXECUTION)).click()
-            print("8. 시장가 매수 체결 내역 확인 완료 ")
+            print("8. 시장가 매도 체결 내역 확인 완료 ")
             time.sleep(5)
             return True
 
